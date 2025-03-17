@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Build the project
-npm run build
+# Build the project with proper base path
+GITHUB_REPOSITORY="iamkrishAI/MCP-Marketplace" npm run build
 
 # Create .nojekyll file to prevent Jekyll processing
 touch out/.nojekyll
@@ -20,4 +20,4 @@ git add -f out/
 git commit -m "Deploy to GitHub Pages"
 git subtree push --prefix out origin gh-pages
 
-echo "Deployment complete! Your site should be available at https://yourusername.github.io/mcp-marketplace/"
+echo "Deployment complete! Your site should be available at https://iamkrishai.github.io/MCP-Marketplace/"

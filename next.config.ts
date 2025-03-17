@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
+  // Ensure trailing slashes are used for better path resolution
+  trailingSlash: true,
 };
 
 export default nextConfig;
