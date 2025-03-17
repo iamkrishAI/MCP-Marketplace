@@ -19,10 +19,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get the base path from environment or use default for GitHub Pages
+  const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
+  
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
+        <link rel="icon" href={`${basePath}/favicon.ico`} type="image/x-icon" sizes="16x16" />
       </head>
       <body className={`${inter.className} bg-black text-white min-h-screen flex flex-col`}>
         <Navbar />
