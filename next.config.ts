@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
+// Get the repository name from the environment or use a default
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'MCP-Marketplace';
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? `/${repoName}` : '';
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export', // Required for GitHub Pages
+  basePath: basePath,
+  assetPrefix: basePath,
+  images: {
+    unoptimized: true, // Required for static export
+  },
 };
 
 export default nextConfig;
