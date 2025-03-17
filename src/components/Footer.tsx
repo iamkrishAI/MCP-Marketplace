@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { Github, Twitter, Linkedin, MessageSquare } from "lucide-react";
 
+// Get the base path from environment or use default for GitHub Pages
+const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -10,28 +13,28 @@ export function Footer() {
     {
       title: "Product",
       links: [
-        { name: "Marketplace", href: "/marketplace" },
-        { name: "Pricing", href: "/pricing" },
-        { name: "Connect", href: "/connect" },
-        { name: "Documentation", href: "/documentation" }
+        { name: "Marketplace", href: `${basePath}/marketplace` },
+        { name: "Pricing", href: `${basePath}/pricing` },
+        { name: "Connect", href: `${basePath}/connect` },
+        { name: "Documentation", href: `${basePath}/documentation` }
       ]
     },
     {
       title: "Resources",
       links: [
-        { name: "Blog", href: "/blog" },
-        { name: "Tutorials", href: "/tutorials" },
-        { name: "Case Studies", href: "/case-studies" },
-        { name: "API Reference", href: "/api-reference" }
+        { name: "Blog", href: `${basePath}/blog` },
+        { name: "Tutorials", href: `${basePath}/tutorials` },
+        { name: "Case Studies", href: `${basePath}/case-studies` },
+        { name: "API Reference", href: `${basePath}/api-reference` }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About", href: "/about" },
-        { name: "Careers", href: "/careers" },
-        { name: "Contact", href: "/contact" },
-        { name: "Privacy Policy", href: "/privacy" }
+        { name: "About", href: `${basePath}/about` },
+        { name: "Careers", href: `${basePath}/careers` },
+        { name: "Contact", href: `${basePath}/contact` },
+        { name: "Privacy Policy", href: `${basePath}/privacy` }
       ]
     }
   ];
@@ -49,7 +52,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and Description */}
           <div className="lg:col-span-2">
-            <Link href="/" className="text-white font-bold text-xl mb-4 inline-block">
+            <Link href={`${basePath}/`} className="text-white font-bold text-xl mb-4 inline-block">
               MCP Marketplace
             </Link>
             <p className="mt-4 max-w-md">
@@ -94,10 +97,10 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p>© {currentYear} MCP Marketplace. All rights reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+            <Link href={`${basePath}/terms`} className="text-gray-400 hover:text-white transition-colors">
               Terms of Service
             </Link>
-            <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+            <Link href={`${basePath}/privacy`} className="text-gray-400 hover:text-white transition-colors">
               Privacy Policy
             </Link>
           </div>
