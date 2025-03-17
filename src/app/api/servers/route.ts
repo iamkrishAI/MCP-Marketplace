@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// For static export compatibility
+export const dynamic = 'force-static';
+
 // Mock data for MCP servers
 const servers = [
   {

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// For static export compatibility
+export const dynamic = 'force-static';
+
 // This API endpoint simulates the provisioning of an MCP server
 export async function POST(request: Request) {
   try {
