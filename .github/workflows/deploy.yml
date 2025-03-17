@@ -28,6 +28,7 @@ jobs:
         env:
           # Set the correct base path for GitHub Pages
           GITHUB_REPOSITORY: ${{ github.repository }}
+          NODE_ENV: production
           
       - name: Add .nojekyll file
         run: touch out/.nojekyll
@@ -37,3 +38,4 @@ jobs:
         with:
           folder: out
           branch: gh-pages
+          clean: true  # Automatically remove deleted files from the deploy branch
