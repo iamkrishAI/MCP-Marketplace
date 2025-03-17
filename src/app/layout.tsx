@@ -7,8 +7,10 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 // Get the base path from environment or use default for GitHub Pages
+// Using a hardcoded value for production to ensure it works in the browser
 const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
 
+// Make basePath available globally through a data attribute
 export const metadata: Metadata = {
   title: "MCP Marketplace - One-Click Connection for AI Integrations",
   description: "Effortlessly connect your LLMs to powerful external tools with a unified standard.",
@@ -23,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-basepath={basePath}>
       <head>
         <link rel="icon" href={`${basePath}/favicon.ico`} type="image/x-icon" sizes="16x16" />
         {/* Force no-cache for development */}

@@ -1,15 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 // Get the base path from environment or use default for GitHub Pages
-const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
+// For client components, we need to ensure this works in the browser
+const getBasePath = () => {
+  // Check if we're in a browser environment
+  if (typeof window !== 'undefined') {
+    // Try to get the base path from the HTML data attribute
+    const dataBasePath = document.documentElement.getAttribute('data-basepath');
+    if (dataBasePath) return dataBasePath;
+    
+    // Fallback: check if we're on GitHub Pages by looking at the hostname
+    if (window.location.hostname.includes('github.io')) {
+      return '/MCP-Marketplace';
+    }
+  }
+  
+  // Server-side or fallback
+  return process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
+};
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [basePath, setBasePath] = useState('');
+  
+  useEffect(() => {
+    setBasePath(getBasePath());
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
