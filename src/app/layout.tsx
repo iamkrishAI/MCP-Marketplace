@@ -6,11 +6,14 @@ import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Get the base path from environment or use default for GitHub Pages
+const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
+
 export const metadata: Metadata = {
   title: "MCP Marketplace - One-Click Connection for AI Integrations",
   description: "Effortlessly connect your LLMs to powerful external tools with a unified standard.",
   icons: {
-    icon: '/favicon.ico',
+    icon: `${basePath}/favicon.ico`,
   },
 };
 
@@ -19,13 +22,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Get the base path from environment or use default for GitHub Pages
-  const basePath = process.env.NODE_ENV === 'production' ? '/MCP-Marketplace' : '';
-  
   return (
     <html lang="en">
       <head>
         <link rel="icon" href={`${basePath}/favicon.ico`} type="image/x-icon" sizes="16x16" />
+        {/* Force no-cache for development */}
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
       </head>
       <body className={`${inter.className} bg-black text-white min-h-screen flex flex-col`}>
         <Navbar />

@@ -8,7 +8,7 @@ const basePath = isProd ? `/${repoName}` : '';
 const nextConfig: NextConfig = {
   output: 'export', // Required for GitHub Pages
   basePath: basePath,
-  assetPrefix: basePath,
+  assetPrefix: basePath + '/',
   images: {
     unoptimized: true, // Required for static export
   },
