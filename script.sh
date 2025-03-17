@@ -6,9 +6,6 @@ GITHUB_REPOSITORY="iamkrishAI/MCP-Marketplace" NODE_ENV=production npm run build
 # Create .nojekyll file to prevent Jekyll processing
 touch out/.nojekyll
 
-# Copy CNAME file to the output directory
-cp public/CNAME out/
-
 # Initialize gh-pages branch if it doesn't exist
 if ! git show-ref --quiet refs/heads/gh-pages; then
   git checkout --orphan gh-pages
