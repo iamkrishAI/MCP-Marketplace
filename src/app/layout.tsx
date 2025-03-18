@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { GitHubPagesRouter } from "@/components/GitHubPagesRouter";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +36,8 @@ export default function RootLayout({
         <meta httpEquiv="Expires" content="0" />
       </head>
       <body className={`${inter.className} bg-black text-white min-h-screen flex flex-col`}>
+        <GitHubPagesRouter />
+        <Script src={`${basePath}/github-pages-fix.js`} strategy="beforeInteractive" />
         <Navbar />
         <main className="flex-grow">
           {children}

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { CustomLink } from "@/components/CustomLink";
 
 // Get the base path from environment or use default for GitHub Pages
 // For client components, we need to ensure this works in the browser
@@ -26,11 +26,6 @@ const getBasePath = () => {
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [basePath, setBasePath] = useState('');
-  
-  useEffect(() => {
-    setBasePath(getBasePath());
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,26 +35,26 @@ export function Navbar() {
     <nav className="bg-black/90 backdrop-blur-sm fixed w-full z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href={`${basePath}/`} className="text-white font-bold text-xl">
+        <CustomLink href="/" className="text-white font-bold text-xl">
           MCP Marketplace
-        </Link>
+        </CustomLink>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link href={`${basePath}/marketplace`} className="text-gray-300 hover:text-white transition-colors">
+          <CustomLink href="/marketplace" className="text-gray-300 hover:text-white transition-colors">
             Marketplace
-          </Link>
-          <Link href={`${basePath}/documentation`} className="text-gray-300 hover:text-white transition-colors">
+          </CustomLink>
+          <CustomLink href="/documentation" className="text-gray-300 hover:text-white transition-colors">
             Documentation
-          </Link>
-          <Link href={`${basePath}/community`} className="text-gray-300 hover:text-white transition-colors">
+          </CustomLink>
+          <CustomLink href="/community" className="text-gray-300 hover:text-white transition-colors">
             Community
-          </Link>
+          </CustomLink>
           <Button 
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
             asChild
           >
-            <Link href={`${basePath}/connect`}>Connect to MCP</Link>
+            <CustomLink href="/connect">Connect to MCP</CustomLink>
           </Button>
         </div>
 
@@ -77,33 +72,33 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <Link 
-              href={`${basePath}/marketplace`}
+            <CustomLink 
+              href="/marketplace"
               className="text-gray-300 hover:text-white transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Marketplace
-            </Link>
-            <Link 
-              href={`${basePath}/documentation`}
+            </CustomLink>
+            <CustomLink 
+              href="/documentation"
               className="text-gray-300 hover:text-white transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Documentation
-            </Link>
-            <Link 
-              href={`${basePath}/community`}
+            </CustomLink>
+            <CustomLink 
+              href="/community"
               className="text-gray-300 hover:text-white transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Community
-            </Link>
+            </CustomLink>
             <Button 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white w-full"
               onClick={() => setIsMenuOpen(false)}
               asChild
             >
-              <Link href={`${basePath}/connect`}>Connect to MCP</Link>
+              <CustomLink href="/connect">Connect to MCP</CustomLink>
             </Button>
           </div>
         </div>

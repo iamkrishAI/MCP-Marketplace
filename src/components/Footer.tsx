@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { Github, Twitter, Linkedin, MessageSquare } from "lucide-react";
+import { CustomLink } from "@/components/CustomLink";
 
 // Get the base path from environment or use default for GitHub Pages
 // For client components, we need to ensure this works in the browser
@@ -25,38 +25,33 @@ const getBasePath = () => {
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const [basePath, setBasePath] = useState('');
-  
-  useEffect(() => {
-    setBasePath(getBasePath());
-  }, []);
   
   const footerLinks = [
     {
       title: "Product",
       links: [
-        { name: "Marketplace", href: `${basePath}/marketplace` },
-        { name: "Pricing", href: `${basePath}/pricing` },
-        { name: "Connect", href: `${basePath}/connect` },
-        { name: "Documentation", href: `${basePath}/documentation` }
+        { name: "Marketplace", href: "/marketplace" },
+        { name: "Pricing", href: "/pricing" },
+        { name: "Connect", href: "/connect" },
+        { name: "Documentation", href: "/documentation" }
       ]
     },
     {
       title: "Resources",
       links: [
-        { name: "Blog", href: `${basePath}/blog` },
-        { name: "Tutorials", href: `${basePath}/tutorials` },
-        { name: "Case Studies", href: `${basePath}/case-studies` },
-        { name: "API Reference", href: `${basePath}/api-reference` }
+        { name: "Blog", href: "/blog" },
+        { name: "Tutorials", href: "/tutorials" },
+        { name: "Case Studies", href: "/case-studies" },
+        { name: "API Reference", href: "/api-reference" }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About", href: `${basePath}/about` },
-        { name: "Careers", href: `${basePath}/careers` },
-        { name: "Contact", href: `${basePath}/contact` },
-        { name: "Privacy Policy", href: `${basePath}/privacy` }
+        { name: "About", href: "/about" },
+        { name: "Careers", href: "/careers" },
+        { name: "Contact", href: "/contact" },
+        { name: "Privacy Policy", href: "/privacy" }
       ]
     }
   ];
@@ -74,9 +69,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and Description */}
           <div className="lg:col-span-2">
-            <Link href={`${basePath}/`} className="text-white font-bold text-xl mb-4 inline-block">
+            <CustomLink href="/" className="text-white font-bold text-xl mb-4 inline-block">
               MCP Marketplace
-            </Link>
+            </CustomLink>
             <p className="mt-4 max-w-md">
               The one-stop marketplace for MCP integrations. Connect your LLMs to powerful external tools with a unified standard.
             </p>
@@ -103,12 +98,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link 
+                    <CustomLink 
                       href={link.href} 
                       className="text-gray-400 hover:text-white transition-colors"
                     >
                       {link.name}
-                    </Link>
+                    </CustomLink>
                   </li>
                 ))}
               </ul>
@@ -119,12 +114,12 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p>© {currentYear} MCP Marketplace. All rights reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link href={`${basePath}/terms`} className="text-gray-400 hover:text-white transition-colors">
+            <CustomLink href="/terms" className="text-gray-400 hover:text-white transition-colors">
               Terms of Service
-            </Link>
-            <Link href={`${basePath}/privacy`} className="text-gray-400 hover:text-white transition-colors">
+            </CustomLink>
+            <CustomLink href="/privacy" className="text-gray-400 hover:text-white transition-colors">
               Privacy Policy
-            </Link>
+            </CustomLink>
           </div>
         </div>
       </div>
