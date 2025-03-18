@@ -22,6 +22,14 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
+  // Ensure styles are properly handled
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader'],
+    });
+    return config;
+  },
 };
 
 export default nextConfig;
